@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FHSSMP.ONLINE x JIM PAN PROD</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin:0; padding:0; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #0f0d0b;
+      color: #f2f2f2;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(90deg, #E39E14, #FFB84D);
+      text-align: center;
+      padding: 2em 1em;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 2px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    header h1 { font-size: 2em; color: #0f0d0b; }
+
+    .store-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2em;
+      padding: 3em 2em;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* Glassmorphism product card */
+    .product {
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.5);
+    }
+
+    .product:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.7);
+    }
+
+    .product img {
+      width: 100%;
+      display: block;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .product-name {
+      font-weight: 600;
+      font-size: 1.1em;
+      margin: 1em 0 0.5em 0;
+      color: #FFB84D;
+      transition: 0.3s;
+    }
+
+    .product-name:hover {
+      color: #fff;
+      text-shadow: 0 0 10px #FFB84D, 0 0 20px #4dc0b5;
+    }
+
+    .product-price {
+      font-weight: bold;
+      color: #4dc0b5;
+      margin-bottom: 1em;
+      font-size: 1em;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5em 1em;
+      background-color: #E39E14;
+      color: #0f0d0b;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-top: 3em;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>FHSSMP.ONLINE x JIM PAN PROD.</h1>
+  </header>
+
+  <div class="store-container">
+    <a href="product1.html" class="product">
+      <img src="images/Tshirt.png" alt="Pumpkin Pie TShirt">
+      <div class="product-name">Pumpkin Pie TShirt</div>
+      <div class="product-price">$24.99</div>
+    </a>
+
+    <a href="product2.html" class="product">
+      <img src="images/Jimhoodie.png" alt="Pumpkin Pie Hoodie">
+      <div class="product-name">Pumpkin Pie Hoodie</div>
+      <div class="product-price">$34.99</div>
+    </a>
+    <!-- Add more products as needed -->
+  </div>
+
+  <footer>
+    &copy; 2026 FHSSMP.ONLINE x JIM PAN PROD.
+  </footer>
+
+</body>
+</html>
