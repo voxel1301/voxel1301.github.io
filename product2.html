@@ -35,21 +35,12 @@
       letter-spacing: 2px;
     }
 
-    header h1 {
-      color: #0f0d0b;
-      font-size: 2em;
-    }
+    header h1 { color: #0f0d0b; }
 
     main {
       max-width: 1100px;
       margin: auto;
       padding: 2.5em 2em;
-    }
-
-    .breadcrumb {
-      opacity: 0.7;
-      font-size: 0.9em;
-      margin-bottom: 1.5em;
     }
 
     .product-layout {
@@ -64,9 +55,7 @@
       transition: transform 0.4s ease;
     }
 
-    .product-image img:hover {
-      transform: scale(1.06);
-    }
+    .product-image img:hover { transform: scale(1.06); }
 
     .product-box {
       background: var(--glass);
@@ -74,32 +63,13 @@
       padding: 2.5em;
       backdrop-filter: blur(14px);
       border: 1px solid rgba(255,255,255,0.15);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .product-box h2 {
-      font-size: 2.2em;
-      color: var(--pumpkin);
-      margin-bottom: 0.5em;
-    }
-
-    .product-box p {
-      font-size: 1.1em;
-      margin-bottom: 1.5em;
-      line-height: 1.6;
     }
 
     .price {
       font-size: 1.6em;
       color: var(--teal);
       font-weight: 800;
-      margin-bottom: 1.2em;
-    }
-
-    .selector {
-      margin-bottom: 1.2em;
+      margin-bottom: 1em;
     }
 
     .selector button {
@@ -110,27 +80,17 @@
       border-radius: 12px;
       margin-right: 0.4em;
       cursor: pointer;
-      transition: 0.2s;
     }
 
-    .selector button:hover,
-    .selector button.active {
-      background: var(--pumpkin);
-      color: #0f0d0b;
-    }
+    .selector button.active { background: var(--pumpkin); color: #000; }
 
-    .buy-row {
-      display: flex;
-      gap: 1em;
-      margin-top: 1em;
-    }
+    .buy-row { display: flex; gap: 1em; margin-top: 1.5em; }
 
     .buy-row input {
       width: 70px;
       padding: 0.6em;
       border-radius: 10px;
       border: none;
-      font-size: 1em;
     }
 
     .buy-row button {
@@ -139,32 +99,19 @@
       border: none;
       border-radius: 16px;
       font-weight: 800;
-      font-size: 1em;
       cursor: pointer;
-      transition: 0.3s;
     }
 
-    .buy-row button:hover {
-      background: var(--pumpkin-dark);
-      transform: scale(1.05);
-    }
+    .reviews { margin-top: 4em; }
 
-    .reviews {
-      margin-top: 4em;
-    }
+    .review { background: var(--glass); padding: 1em; border-radius: 12px; margin-bottom: 1em; }
 
-    .reviews h3 {
-      color: var(--teal);
-      font-size: 1.6em;
+    .review-form input, .review-form textarea {
+      width: 100%;
       margin-bottom: 1em;
-    }
-
-    .review {
-      background: var(--glass);
-      padding: 1.2em;
-      border-radius: 14px;
-      margin-bottom: 1em;
-      backdrop-filter: blur(6px);
+      padding: 0.8em;
+      border-radius: 10px;
+      border: none;
     }
 
     footer {
@@ -172,49 +119,31 @@
       text-align: center;
       padding: 1.5em;
       color: #0f0d0b;
-      font-weight: 600;
-      letter-spacing: 1px;
       margin-top: 4em;
     }
 
     @media (max-width: 900px) {
-      .product-layout {
-        grid-template-columns: 1fr;
-      }
+      .product-layout { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <!-- ===== EDIT THESE PER PRODUCT ===== -->
   <h1>Pumpkin Pie Hoodie</h1>
-  <!-- ================================= -->
 </header>
 
 <main>
 
-  <div class="breadcrumb">Home / Shop / Pumpkin Pie Hoodie</div>
-
   <div class="product-layout">
     <div class="product-image">
-      <!-- ===== EDIT IMAGE PER PRODUCT ===== -->
       <img src="images/Jimhoodie.png" alt="Pumpkin Pie Hoodie">
-      <!-- ================================= -->
     </div>
 
     <div class="product-box">
-      <!-- ===== EDIT THESE PER PRODUCT ===== -->
       <h2>Pumpkin Pie Hoodie</h2>
-
-      <p>
-        High-quality cotton Hoodie with pumpkin pie design and draw strings. One hundred percent
-        cotton, ultra-comfortable, breathable, and perfect for everyday wear.
-        Show your support of Jim Pan in peak style.
-      </p>
-
+      <p>High-quality cotton hoodie with pumpkin pie design and drawstrings. Cozy, breathable, and built for everyday wear.</p>
       <div class="price">$34.99</div>
-      <!-- ================================= -->
 
       <div class="selector">
         <strong>Size</strong><br>
@@ -225,26 +154,21 @@
       </div>
 
       <div class="buy-row">
-        <input type="number" value="1" min="1">
-        <button>Add to Cart</button>
+        <input type="number" value="1" min="1" id="qty">
+        <button onclick="addToCart()">Add to Cart</button>
       </div>
     </div>
   </div>
 
   <section class="reviews">
-    <h3>Reviews</h3>
+    <h3>Customer Reviews</h3>
+    <div id="review-list"></div>
 
-    <div class="review">
-      <strong>Alex S:</strong> Love this shirt! Super comfy and stylish.
-    </div>
-
-    <div class="review">
-      <strong>Sam W:</strong> The design is amazing, will buy again.
-    </div>
-
-    <div class="review">
-      <strong>Blake H:</strong> Super high quality print, would buy again.
-    </div>
+    <form class="review-form" onsubmit="submitReview(event)">
+      <input type="text" id="reviewName" placeholder="Your name" required>
+      <textarea id="reviewText" placeholder="Write your review..." required></textarea>
+      <button type="submit">Submit Review</button>
+    </form>
   </section>
 
 </main>
@@ -252,6 +176,60 @@
 <footer>
   &copy; 2026 FHSSMP.ONLINE x JIM PAN PROD.
 </footer>
+
+<script>
+  // Size selector logic
+  document.querySelectorAll('.selector button').forEach(btn => {
+    btn.onclick = () => {
+      document.querySelectorAll('.selector button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    };
+  });
+
+  // Cart placeholder (localStorage-based)
+  function addToCart() {
+    const size = document.querySelector('.selector .active').innerText;
+    const qty = document.getElementById('qty').value;
+
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push({
+      name: 'Pumpkin Pie Hoodie',
+      price: 34.99,
+      size,
+      qty
+    });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert('Added to cart!');
+  }
+
+  // Reviews system (per product)
+  const reviewKey = 'reviews_pumpkin_pie_hoodie';
+
+  function loadReviews() {
+    const reviews = JSON.parse(localStorage.getItem(reviewKey)) || [];
+    const list = document.getElementById('review-list');
+    list.innerHTML = '';
+    reviews.forEach(r => {
+      const div = document.createElement('div');
+      div.className = 'review';
+      div.innerHTML = `<strong>${r.name}</strong><br>${r.text}`;
+      list.appendChild(div);
+    });
+  }
+
+  function submitReview(e) {
+    e.preventDefault();
+    const name = reviewName.value;
+    const text = reviewText.value;
+    const reviews = JSON.parse(localStorage.getItem(reviewKey)) || [];
+    reviews.push({ name, text });
+    localStorage.setItem(reviewKey, JSON.stringify(reviews));
+    e.target.reset();
+    loadReviews();
+  }
+
+  loadReviews();
+</script>
 
 </body>
 </html>
