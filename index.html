@@ -10,17 +10,12 @@
 
   <style>
     * { box-sizing: border-box; margin:0; padding:0; }
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #0f0d0b;
-      color: #f2f2f2;
-    }
+    body { font-family: 'Montserrat', sans-serif; background: #0f0d0b; color: #f2f2f2; line-height: 1.6; }
 
     /* ===== HEADER ===== */
     header {
       background: linear-gradient(90deg, #E39E14, #FFB84D);
-      padding: 1.5em 1em;
+      padding: 1.5em 2em;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -29,14 +24,12 @@
       z-index:100;
       box-shadow: 0 4px 6px rgba(0,0,0,0.4);
     }
-
     header h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5em;
+      font-size: 1.8em;
       color:#0f0d0b;
       letter-spacing:2px;
     }
-
     .cart-icon {
       position: relative;
       font-weight: 800;
@@ -44,7 +37,6 @@
       color:#0f0d0b;
       text-decoration:none;
     }
-
     .cart-count {
       position:absolute;
       top:-8px;
@@ -56,23 +48,48 @@
       border-radius:999px;
     }
 
-    /* ===== FEATURED / COLLECTIONS ===== */
+    /* ===== BANNER ===== */
+    .banner {
+      width: 100%;
+      height: 400px;
+      background: url('images/banner.jpg') center/cover no-repeat;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      text-shadow: 0 0 15px rgba(0,0,0,0.7);
+      font-family:'Playfair Display', serif;
+      font-size: 2.5em;
+      letter-spacing:2px;
+      margin-bottom:2em;
+    }
+
+    /* ===== FEATURED ===== */
     .featured {
       text-align:center;
-      padding:3em 1em 1em;
+      padding:2em 1em;
     }
+    .featured h2 { color:#FFB84D; font-size:2.2em; margin-bottom:0.5em; }
+    .featured p { opacity:0.85; max-width:700px; margin:auto; }
 
-    .featured h2 {
-      color:#FFB84D;
-      font-size:2em;
-      margin-bottom:0.5em;
+    /* ===== CATEGORIES / TAGS ===== */
+    .categories {
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:1em;
+      margin:2em 0;
     }
-
-    .featured p {
-      opacity:0.85;
-      max-width:600px;
-      margin:auto;
+    .category {
+      padding:0.8em 1.5em;
+      border-radius:20px;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(6px);
+      cursor:pointer;
+      transition:0.3s;
+      border:1px solid rgba(255,255,255,0.2);
     }
+    .category:hover { background:#FFB84D; color:#0f0d0b; }
 
     /* ===== STORE GRID ===== */
     .store-container {
@@ -83,7 +100,6 @@
       max-width: 1200px;
       margin: auto;
     }
-
     .product {
       background: rgba(255,255,255,0.05);
       border-radius: 16px;
@@ -91,35 +107,31 @@
       border: 1px solid rgba(255,255,255,0.2);
       overflow: hidden;
       text-align: center;
-      transition: 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
       box-shadow: 0 8px 15px rgba(0,0,0,0.5);
       text-decoration:none;
       color:#f2f2f2;
+      position:relative;
     }
-
-    .product:hover {
-      transform: translateY(-8px) scale(1.05);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.7);
+    .product:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 12px 25px rgba(0,0,0,0.7); }
+    .product img { width: 100%; display: block; border-bottom: 1px solid rgba(255,255,255,0.2); }
+    .product-name { font-weight: 600; font-size: 1.1em; margin: 1em 0 0.5em; color: #FFB84D; transition:0.3s; }
+    .product-name:hover { color:#fff; text-shadow: 0 0 10px #FFB84D, 0 0 20px #4dc0b5; }
+    .product-price { font-weight:bold; color:#4dc0b5; margin-bottom:1.2em; }
+    .quick-add {
+      position:absolute;
+      bottom:10px; left:50%; transform:translateX(-50%);
+      background: #FFB84D;
+      color:#0f0d0b;
+      border:none;
+      padding:0.6em 1.2em;
+      border-radius:12px;
+      font-weight:600;
+      cursor:pointer;
+      opacity:0.95;
+      transition:0.3s;
     }
-
-    .product img {
-      width: 100%;
-      display: block;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-    }
-
-    .product-name {
-      font-weight: 600;
-      font-size: 1.1em;
-      margin: 1em 0 0.5em;
-      color: #FFB84D;
-    }
-
-    .product-price {
-      font-weight: bold;
-      color: #4dc0b5;
-      margin-bottom: 1.2em;
-    }
+    .quick-add:hover { background:#E39E14; transform:scale(1.05); }
 
     footer {
       text-align: center;
@@ -133,44 +145,76 @@
 </head>
 <body>
 
-<header>
-  <h1>FHSSMP.ONLINE</h1>
-  <a href="cart.html" class="cart-icon">
-    Cart 🛒
-    <span class="cart-count" id="cartCount">0</span>
-  </a>
-</header>
+  <header>
+    <h1>FHSSMP.ONLINE</h1>
+    <a href="cart.html" class="cart-icon">
+      Cart 🛒 <span class="cart-count" id="cartCount">0</span>
+    </a>
+  </header>
 
-<section class="featured">
-  <h2>Latest Drop</h2>
-  <p>Limited-run apparel from FHSSMP x Jim Pan. Once it’s gone, it’s gone.</p>
-</section>
+  <!-- ===== BANNER IMAGE ===== -->
+  <div class="banner">
+    FHSSMP x Jim Pan
+  </div>
 
-<div class="store-container">
-  <a href="pumpkin-pie-tshirt.html" class="product">
-    <img src="images/Tshirt.png" alt="Pumpkin Pie TShirt">
-    <div class="product-name">Pumpkin Pie TShirt</div>
-    <div class="product-price">$24.99</div>
-  </a>
+  <!-- ===== FEATURED ===== -->
+  <section class="featured">
+    <h2>Latest Drop</h2>
+    <p>Limited-run apparel from FHSSMP x Jim Pan. Once it’s gone, it’s gone.</p>
+  </section>
 
-  <a href="pumpkin-pie-hoodie.html" class="product">
-    <img src="images/Jimhoodie.png" alt="Pumpkin Pie Hoodie">
-    <div class="product-name">Pumpkin Pie Hoodie</div>
-    <div class="product-price">$34.99</div>
-  </a>
-</div>
+  <!-- ===== CATEGORIES ===== -->
+  <div class="categories">
+    <div class="category">T-Shirts</div>
+    <div class="category">Hoodies</div>
+    <div class="category">Accessories</div>
+  </div>
 
-<footer>
-  &copy; 2026 FHSSMP.ONLINE x JIM PAN PROD.
-</footer>
+  <!-- ===== STORE GRID ===== -->
+  <div class="store-container">
+    <a href="pumpkin-pie-tshirt.html" class="product">
+      <img src="images/Tshirt.png" alt="Pumpkin Pie TShirt">
+      <div class="product-name">Pumpkin Pie TShirt</div>
+      <div class="product-price">$24.99</div>
+      <button class="quick-add" onclick="addToCart('Pumpkin Pie TShirt',24.99)">Add to Cart</button>
+    </a>
 
-<script>
-  const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-  const cartCount = document.getElementById('cartCount');
+    <a href="pumpkin-pie-hoodie.html" class="product">
+      <img src="images/Jimhoodie.png" alt="Pumpkin Pie Hoodie">
+      <div class="product-name">Pumpkin Pie Hoodie</div>
+      <div class="product-price">$34.99</div>
+      <button class="quick-add" onclick="addToCart('Pumpkin Pie Hoodie',34.99)">Add to Cart</button>
+    </a>
+  </div>
 
-  const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-  cartCount.textContent = totalItems;
-</script>
+  <footer>
+    &copy; 2026 FHSSMP.ONLINE x JIM PAN PROD.
+  </footer>
+
+  <script>
+    // ===== CART SYSTEM =====
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const cartCount = document.getElementById('cartCount');
+
+    function updateCartCount() {
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      cartCount.textContent = totalItems;
+    }
+
+    function addToCart(name, price) {
+      const existing = cart.find(i => i.name === name);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({name:name, price:price, qty:1});
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+      alert(`${name} added to cart!`);
+    }
+
+    updateCartCount();
+  </script>
 
 </body>
 </html>
