@@ -5,27 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FHSSMP.ONLINE x JIM PAN PROD</title>
   
-  <!-- Google Fonts for fancy typography -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
   <style>
-    /* Reset and body */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin:0; padding:0; }
 
     body {
       font-family: 'Montserrat', sans-serif;
-      background-color: #0f0d0b; /* dark background */
+      background-color: #0f0d0b;
       color: #f2f2f2;
       line-height: 1.6;
     }
 
-    /* Header */
     header {
-      background: linear-gradient(90deg, #E39E14, #FFB84D); /* pumpkin-orange gradient */
+      background: linear-gradient(90deg, #E39E14, #FFB84D);
       text-align: center;
       padding: 2em 1em;
       font-family: 'Playfair Display', serif;
@@ -33,12 +27,8 @@
       box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     }
 
-    header h1 {
-      font-size: 2em;
-      color: #0f0d0b;
-    }
+    header h1 { font-size: 2em; color: #0f0d0b; }
 
-    /* Store container */
     .store-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -48,43 +38,50 @@
       margin: auto;
     }
 
-    /* Product card */
+    /* Glassmorphism product card */
     .product {
-      background-color: #1a1a1a;
-      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.5);
     }
 
     .product:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.7);
     }
 
     .product img {
       width: 100%;
       display: block;
-      border-bottom: 1px solid #333;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
     }
 
     .product-name {
       font-weight: 600;
       font-size: 1.1em;
       margin: 1em 0 0.5em 0;
-      color: #FFB84D; /* pumpkin accent */
+      color: #FFB84D;
+      transition: 0.3s;
+    }
+
+    .product-name:hover {
+      color: #fff;
+      text-shadow: 0 0 10px #FFB84D, 0 0 20px #4dc0b5;
     }
 
     .product-price {
       font-weight: bold;
-      color: #4dc0b5; /* fish oil teal accent */
+      color: #4dc0b5;
       margin-bottom: 1em;
       font-size: 1em;
     }
 
-    /* Footer */
     footer {
       text-align: center;
       padding: 1.5em 1em;
@@ -94,21 +91,6 @@
       letter-spacing: 1px;
       margin-top: 3em;
     }
-
-    /* Fancy text hover effect for product names */
-    .product-name:hover {
-      color: #fff;
-      text-shadow: 0 0 10px #FFB84D, 0 0 20px #4dc0b5;
-      transition: 0.3s;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.5em;
-      }
-    }
-
   </style>
 </head>
 <body>
@@ -118,19 +100,18 @@
   </header>
 
   <div class="store-container">
-    <!-- Example Products -->
-    <div class="product">
+    <a href="product1.html" class="product">
       <img src="images/Tshirt.png" alt="Pumpkin Pie TShirt">
       <div class="product-name">Pumpkin Pie TShirt</div>
       <div class="product-price">$24.99</div>
-    </div>
+    </a>
 
-    <div class="product">
+    <a href="product2.html" class="product">
       <img src="images/Jimhoodie.png" alt="Pumpkin Pie Hoodie">
       <div class="product-name">Pumpkin Pie Hoodie</div>
       <div class="product-price">$34.99</div>
-    </div>
-    <!-- Add more products here -->
+    </a>
+    <!-- Add more products as needed -->
   </div>
 
   <footer>
