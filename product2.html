@@ -3,148 +3,255 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ===== EDIT THESE PER PRODUCT ===== -->
   <title>Pumpkin Pie Hoodie - FHSSMP.ONLINE</title>
+  <!-- ================================= -->
+
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --bg: #0f0d0b;
+      --pumpkin: #FFB84D;
+      --pumpkin-dark: #E39E14;
+      --teal: #4dc0b5;
+      --glass: rgba(255,255,255,0.06);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: 'Montserrat', sans-serif;
-      background-color: #0f0d0b;
+      background: var(--bg);
       color: #f2f2f2;
-      margin: 0;
     }
 
     header {
-      background: linear-gradient(90deg, #E39E14, #FFB84D);
+      background: linear-gradient(90deg, var(--pumpkin-dark), var(--pumpkin));
       text-align: center;
       padding: 2em 1em;
       font-family: 'Playfair Display', serif;
       letter-spacing: 2px;
     }
 
-    header h1 { color: #0f0d0b; }
+    header h1 {
+      color: #0f0d0b;
+      font-size: 2em;
+    }
 
     main {
-      max-width: 900px;
+      max-width: 1100px;
       margin: auto;
-      padding: 2em;
+      padding: 2.5em 2em;
     }
 
-    .product-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2em;
+    .breadcrumb {
+      opacity: 0.7;
+      font-size: 0.9em;
+      margin-bottom: 1.5em;
     }
 
-    .product-container img {
-      max-width: 400px;
-      border-radius: 16px;
-      flex: 1;
+    .product-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3em;
     }
 
-    .product-info {
-      flex: 1;
-      min-width: 250px;
+    .product-image img {
+      width: 100%;
+      border-radius: 20px;
+      transition: transform 0.4s ease;
+    }
+
+    .product-image img:hover {
+      transform: scale(1.06);
+    }
+
+    .product-box {
+      background: var(--glass);
+      border-radius: 20px;
+      padding: 2.5em;
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.15);
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
-    .product-info h2 {
-      font-size: 2em;
-      color: #FFB84D;
+    .product-box h2 {
+      font-size: 2.2em;
+      color: var(--pumpkin);
       margin-bottom: 0.5em;
     }
 
-    .product-info p { margin-bottom: 1em; font-size: 1.1em; }
-
-    .price {
-      font-size: 1.5em;
-      color: #4dc0b5;
-      font-weight: 700;
-      margin-bottom: 1em;
+    .product-box p {
+      font-size: 1.1em;
+      margin-bottom: 1.5em;
+      line-height: 1.6;
     }
 
-    .buy-button {
-      background: #FFB84D;
-      color: #0f0d0b;
-      font-weight: 700;
-      padding: 1em;
-      border: none;
+    .price {
+      font-size: 1.6em;
+      color: var(--teal);
+      font-weight: 800;
+      margin-bottom: 1.2em;
+    }
+
+    .selector {
+      margin-bottom: 1.2em;
+    }
+
+    .selector button {
+      background: none;
+      border: 1px solid var(--pumpkin);
+      color: var(--pumpkin);
+      padding: 0.6em 1.1em;
       border-radius: 12px;
+      margin-right: 0.4em;
       cursor: pointer;
-      transition: 0.3s;
+      transition: 0.2s;
+    }
+
+    .selector button:hover,
+    .selector button.active {
+      background: var(--pumpkin);
+      color: #0f0d0b;
+    }
+
+    .buy-row {
+      display: flex;
+      gap: 1em;
+      margin-top: 1em;
+    }
+
+    .buy-row input {
+      width: 70px;
+      padding: 0.6em;
+      border-radius: 10px;
+      border: none;
       font-size: 1em;
     }
 
-    .buy-button:hover {
-      background: #E39E14;
+    .buy-row button {
+      flex: 1;
+      background: var(--pumpkin);
+      border: none;
+      border-radius: 16px;
+      font-weight: 800;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .buy-row button:hover {
+      background: var(--pumpkin-dark);
       transform: scale(1.05);
     }
 
-    /* Reviews Section */
     .reviews {
-      margin-top: 3em;
+      margin-top: 4em;
     }
 
     .reviews h3 {
-      font-size: 1.5em;
+      color: var(--teal);
+      font-size: 1.6em;
       margin-bottom: 1em;
-      color: #4dc0b5;
     }
 
     .review {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      padding: 1em;
+      background: var(--glass);
+      padding: 1.2em;
+      border-radius: 14px;
       margin-bottom: 1em;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(6px);
     }
 
-    .review p { margin-bottom: 0.5em; }
-
     footer {
+      background: var(--pumpkin-dark);
       text-align: center;
       padding: 1.5em;
-      background: #E39E14;
       color: #0f0d0b;
       font-weight: 600;
       letter-spacing: 1px;
-      margin-top: 3em;
+      margin-top: 4em;
+    }
+
+    @media (max-width: 900px) {
+      .product-layout {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Pumpkin Pie Hoodie</h1>
-  </header>
+<header>
+  <!-- ===== EDIT THESE PER PRODUCT ===== -->
+  <h1>Pumpkin Pie Hoodie</h1>
+  <!-- ================================= -->
+</header>
 
-  <main>
-    <div class="product-container">
+<main>
+
+  <div class="breadcrumb">Home / Shop / Pumpkin Pie Hoodie</div>
+
+  <div class="product-layout">
+    <div class="product-image">
+      <!-- ===== EDIT IMAGE PER PRODUCT ===== -->
       <img src="images/Jimhoodie.png" alt="Pumpkin Pie Hoodie">
-      <div class="product-info">
-        <h2>Pumpkin Pie Hoodie</h2>
-        <p>Cozy, premium hoodie featuring the Pumpkin Pie design. Perfect for layering and staying stylish while warm.</p>
-        <div class="price">$34.99</div>
-        <button class="buy-button">Add to Cart</button>
-      </div>
+      <!-- ================================= -->
     </div>
 
-    <div class="reviews">
-      <h3>Reviews</h3>
-      <div class="review">
-        <p><strong>Jordan:</strong> Super soft hoodie, fits perfectly and looks amazing!</p>
-      </div>
-      <div class="review">
-        <p><strong>Riley:</strong> Warm and comfy, got compliments everywhere.</p>
-      </div>
-      <!-- More reviews can be added here -->
-    </div>
-  </main>
+    <div class="product-box">
+      <!-- ===== EDIT THESE PER PRODUCT ===== -->
+      <h2>Pumpkin Pie Hoodie</h2>
 
-  <footer>
-    &copy; 2026 FHSSMP.ONLINE x JIM PAN PROD.
-  </footer>
+      <p>
+        High-quality cotton Hoodie with pumpkin pie design and draw strings. One hundred percent
+        cotton, ultra-comfortable, breathable, and perfect for everyday wear.
+        Show your support of Jim Pan in peak style.
+      </p>
+
+      <div class="price">$34.99</div>
+      <!-- ================================= -->
+
+      <div class="selector">
+        <strong>Size</strong><br>
+        <button class="active">S</button>
+        <button>M</button>
+        <button>L</button>
+        <button>XL</button>
+      </div>
+
+      <div class="buy-row">
+        <input type="number" value="1" min="1">
+        <button>Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="reviews">
+    <h3>Reviews</h3>
+
+    <div class="review">
+      <strong>Alex S:</strong> Love this shirt! Super comfy and stylish.
+    </div>
+
+    <div class="review">
+      <strong>Sam W:</strong> The design is amazing, will buy again.
+    </div>
+
+    <div class="review">
+      <strong>Blake H:</strong> Super high quality print, would buy again.
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2026 FHSSMP.ONLINE x JIM PAN PROD.
+</footer>
 
 </body>
 </html>
