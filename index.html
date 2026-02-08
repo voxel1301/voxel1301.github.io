@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FHSSMP.ONLINE x JIM PAN PROD</title>
-  
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
@@ -15,20 +15,66 @@
       font-family: 'Montserrat', sans-serif;
       background-color: #0f0d0b;
       color: #f2f2f2;
-      line-height: 1.6;
     }
 
+    /* ===== HEADER ===== */
     header {
       background: linear-gradient(90deg, #E39E14, #FFB84D);
-      text-align: center;
-      padding: 2em 1em;
-      font-family: 'Playfair Display', serif;
-      letter-spacing: 2px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      padding: 1.5em 1em;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      position: sticky;
+      top:0;
+      z-index:100;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.4);
     }
 
-    header h1 { font-size: 2em; color: #0f0d0b; }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5em;
+      color:#0f0d0b;
+      letter-spacing:2px;
+    }
 
+    .cart-icon {
+      position: relative;
+      font-weight: 800;
+      cursor: pointer;
+      color:#0f0d0b;
+      text-decoration:none;
+    }
+
+    .cart-count {
+      position:absolute;
+      top:-8px;
+      right:-12px;
+      background:#e74c3c;
+      color:white;
+      font-size:0.75em;
+      padding:2px 6px;
+      border-radius:999px;
+    }
+
+    /* ===== FEATURED / COLLECTIONS ===== */
+    .featured {
+      text-align:center;
+      padding:3em 1em 1em;
+    }
+
+    .featured h2 {
+      color:#FFB84D;
+      font-size:2em;
+      margin-bottom:0.5em;
+    }
+
+    .featured p {
+      opacity:0.85;
+      max-width:600px;
+      margin:auto;
+    }
+
+    /* ===== STORE GRID ===== */
     .store-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -38,7 +84,6 @@
       margin: auto;
     }
 
-    /* Glassmorphism product card */
     .product {
       background: rgba(255,255,255,0.05);
       border-radius: 16px;
@@ -46,9 +91,10 @@
       border: 1px solid rgba(255,255,255,0.2);
       overflow: hidden;
       text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
+      transition: 0.3s;
       box-shadow: 0 8px 15px rgba(0,0,0,0.5);
+      text-decoration:none;
+      color:#f2f2f2;
     }
 
     .product:hover {
@@ -65,58 +111,66 @@
     .product-name {
       font-weight: 600;
       font-size: 1.1em;
-      margin: 1em 0 0.5em 0;
+      margin: 1em 0 0.5em;
       color: #FFB84D;
-      transition: 0.3s;
-    }
-
-    .product-name:hover {
-      color: #fff;
-      text-shadow: 0 0 10px #FFB84D, 0 0 20px #4dc0b5;
     }
 
     .product-price {
       font-weight: bold;
       color: #4dc0b5;
-      margin-bottom: 1em;
-      font-size: 1em;
+      margin-bottom: 1.2em;
     }
 
     footer {
       text-align: center;
-      padding: 1.5em 1em;
+      padding: 1.5em;
       background-color: #E39E14;
       color: #0f0d0b;
       font-weight: 600;
-      letter-spacing: 1px;
       margin-top: 3em;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>FHSSMP.ONLINE x JIM PAN PROD.</h1>
-  </header>
+<header>
+  <h1>FHSSMP.ONLINE</h1>
+  <a href="cart.html" class="cart-icon">
+    Cart 🛒
+    <span class="cart-count" id="cartCount">0</span>
+  </a>
+</header>
 
-  <div class="store-container">
-    <a href="product1.html" class="product">
-      <img src="images/Tshirt.png" alt="Pumpkin Pie TShirt">
-      <div class="product-name">Pumpkin Pie TShirt</div>
-      <div class="product-price">$24.99</div>
-    </a>
+<section class="featured">
+  <h2>Latest Drop</h2>
+  <p>Limited-run apparel from FHSSMP x Jim Pan. Once it’s gone, it’s gone.</p>
+</section>
 
-    <a href="product2.html" class="product">
-      <img src="images/Jimhoodie.png" alt="Pumpkin Pie Hoodie">
-      <div class="product-name">Pumpkin Pie Hoodie</div>
-      <div class="product-price">$34.99</div>
-    </a>
-    <!-- Add more products as needed -->
-  </div>
+<div class="store-container">
+  <a href="pumpkin-pie-tshirt.html" class="product">
+    <img src="images/Tshirt.png" alt="Pumpkin Pie TShirt">
+    <div class="product-name">Pumpkin Pie TShirt</div>
+    <div class="product-price">$24.99</div>
+  </a>
 
-  <footer>
-    &copy; 2026 FHSSMP.ONLINE x JIM PAN PROD.
-  </footer>
+  <a href="pumpkin-pie-hoodie.html" class="product">
+    <img src="images/Jimhoodie.png" alt="Pumpkin Pie Hoodie">
+    <div class="product-name">Pumpkin Pie Hoodie</div>
+    <div class="product-price">$34.99</div>
+  </a>
+</div>
+
+<footer>
+  &copy; 2026 FHSSMP.ONLINE x JIM PAN PROD.
+</footer>
+
+<script>
+  const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+  const cartCount = document.getElementById('cartCount');
+
+  const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+  cartCount.textContent = totalItems;
+</script>
 
 </body>
 </html>
