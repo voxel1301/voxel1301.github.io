@@ -1,26 +1,100 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My Site</title>
-    <style>
-      body {
-        font-family: sans-serif;
-        background: #111;
-        color: #9e4cc4;
-        text-align: center;
-        padding-top: 5vh;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>VIVET</h1>
-    <p>1 of 1</p>
-  </body>
-  <body>
-    <h1>Once Upon a time...</h1>
-    <p>There was a great player who went by the name Amirlll</p>
-    <p>His weapon of choice was a masterfully crafted blade he proclaimed as "Deathwish"</p>
-    <img src="images\kcik.png" alt="Jimbo Jump kick" width="300" height="450">
-  </body>
-</html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
 
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1em 0;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .store-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 2em;
+      gap: 2em;
+    }
+
+    .product {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      width: 200px;
+      text-align: center;
+      padding: 1em;
+      transition: transform 0.2s;
+    }
+
+    .product:hover {
+      transform: scale(1.05);
+    }
+
+    .product img {
+      max-width: 100%;
+      border-radius: 4px;
+    }
+
+    .product-name {
+      font-weight: bold;
+      margin: 0.5em 0 0.2em 0;
+    }
+
+    .product-price {
+      color: #555;
+      margin-bottom: 0.5em;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1em 0;
+      background-color: #333;
+      color: white;
+      margin-top: 2em;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>My Store</h1>
+  </header>
+
+  <div class="store-container">
+    <!-- Example Product -->
+    <div class="product">
+      <img src="images/product1.png" alt="Product 1">
+      <div class="product-name">Product 1</div>
+      <div class="product-price">$19.99</div>
+    </div>
+
+    <div class="product">
+      <img src="images/product2.png" alt="Product 2">
+      <div class="product-name">Product 2</div>
+      <div class="product-price">$29.99</div>
+    </div>
+
+    <!-- Add more products here -->
+  </div>
+
+  <footer>
+    &copy; 2026 My Store
+  </footer>
+
+</body>
+</html>
