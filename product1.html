@@ -35,21 +35,12 @@
       letter-spacing: 2px;
     }
 
-    header h1 {
-      color: #0f0d0b;
-      font-size: 2em;
-    }
+    header h1 { color: #0f0d0b; }
 
     main {
       max-width: 1100px;
       margin: auto;
       padding: 2.5em 2em;
-    }
-
-    .breadcrumb {
-      opacity: 0.7;
-      font-size: 0.9em;
-      margin-bottom: 1.5em;
     }
 
     .product-layout {
@@ -74,9 +65,6 @@
       padding: 2.5em;
       backdrop-filter: blur(14px);
       border: 1px solid rgba(255,255,255,0.15);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
     }
 
     .product-box h2 {
@@ -98,10 +86,6 @@
       margin-bottom: 1.2em;
     }
 
-    .selector {
-      margin-bottom: 1.2em;
-    }
-
     .selector button {
       background: none;
       border: 1px solid var(--pumpkin);
@@ -113,8 +97,8 @@
       transition: 0.2s;
     }
 
-    .selector button:hover,
-    .selector button.active {
+    .selector button.active,
+    .selector button:hover {
       background: var(--pumpkin);
       color: #0f0d0b;
     }
@@ -139,7 +123,6 @@
       border: none;
       border-radius: 16px;
       font-weight: 800;
-      font-size: 1em;
       cursor: pointer;
       transition: 0.3s;
     }
@@ -153,18 +136,30 @@
       margin-top: 4em;
     }
 
-    .reviews h3 {
-      color: var(--teal);
-      font-size: 1.6em;
-      margin-bottom: 1em;
-    }
-
     .review {
       background: var(--glass);
       padding: 1.2em;
       border-radius: 14px;
       margin-bottom: 1em;
-      backdrop-filter: blur(6px);
+    }
+
+    .reviews input,
+    .reviews textarea {
+      width: 100%;
+      margin-bottom: 0.8em;
+      padding: 0.7em;
+      border-radius: 10px;
+      border: none;
+      font-family: inherit;
+    }
+
+    .reviews button {
+      background: var(--teal);
+      border: none;
+      padding: 0.7em 1.2em;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
     }
 
     footer {
@@ -172,51 +167,38 @@
       text-align: center;
       padding: 1.5em;
       color: #0f0d0b;
-      font-weight: 600;
-      letter-spacing: 1px;
       margin-top: 4em;
     }
 
     @media (max-width: 900px) {
-      .product-layout {
-        grid-template-columns: 1fr;
-      }
+      .product-layout { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <!-- ===== EDIT THESE PER PRODUCT ===== -->
   <h1>Pumpkin Pie TShirt</h1>
-  <!-- ================================= -->
 </header>
 
 <main>
 
-  <div class="breadcrumb">Home / Shop / Pumpkin Pie TShirt</div>
-
   <div class="product-layout">
     <div class="product-image">
-      <!-- ===== EDIT IMAGE PER PRODUCT ===== -->
       <img src="images/Tshirt.png" alt="Pumpkin Pie TShirt">
-      <!-- ================================= -->
     </div>
 
     <div class="product-box">
-      <!-- ===== EDIT THESE PER PRODUCT ===== -->
       <h2>Pumpkin Pie TShirt</h2>
 
       <p>
-        High-quality cotton T-shirt with pumpkin pie design. One hundred percent
-        cotton, ultra-comfortable, breathable, and perfect for everyday wear.
-        Show your support of Jim Pan in peak style.
+        High-quality cotton T-shirt with pumpkin pie design.
+        One hundred percent cotton, breathable, and perfect for everyday wear.
       </p>
 
       <div class="price">$24.99</div>
-      <!-- ================================= -->
 
-      <div class="selector">
+      <div class="selector" id="sizeSelector">
         <strong>Size</strong><br>
         <button class="active">S</button>
         <button>M</button>
@@ -225,26 +207,21 @@
       </div>
 
       <div class="buy-row">
-        <input type="number" value="1" min="1">
-        <button>Add to Cart</button>
+        <input type="number" id="qty" value="1" min="1">
+        <button id="addToCart">Add to Cart</button>
       </div>
     </div>
   </div>
 
   <section class="reviews">
     <h3>Reviews</h3>
+    <div id="reviewList"></div>
 
-    <div class="review">
-      <strong>Alex S:</strong> Love this shirt! Super comfy and stylish.
-    </div>
-
-    <div class="review">
-      <strong>Sam W:</strong> The design is amazing, will buy again.
-    </div>
-
-    <div class="review">
-      <strong>Blake H:</strong> Super high quality print, would buy again.
-    </div>
+    <form id="reviewForm">
+      <input type="text" id="reviewName" placeholder="Your name" required>
+      <textarea id="reviewText" placeholder="Write a review" required></textarea>
+      <button type="submit">Submit Review</button>
+    </form>
   </section>
 
 </main>
@@ -252,6 +229,66 @@
 <footer>
   &copy; 2026 FHSSMP.ONLINE x JIM PAN PROD.
 </footer>
+
+<script>
+  const productId = 'pumpkin-pie-tshirt';
+
+  /* SIZE SELECTOR */
+  let selectedSize = 'S';
+  document.querySelectorAll('#sizeSelector button').forEach(btn => {
+    btn.onclick = () => {
+      document.querySelectorAll('#sizeSelector button')
+        .forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedSize = btn.textContent;
+    };
+  });
+
+  /* CART */
+  document.getElementById('addToCart').onclick = () => {
+    const qty = parseInt(document.getElementById('qty').value);
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+    cart.push({
+      id: productId,
+      name: 'Pumpkin Pie TShirt',
+      price: 24.99,
+      size: selectedSize,
+      qty
+    });
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert('Added to cart');
+  };
+
+  /* REVIEWS */
+  const reviewList = document.getElementById('reviewList');
+  const reviews = JSON.parse(localStorage.getItem(productId + '-reviews') || '[]');
+
+  function renderReviews() {
+    reviewList.innerHTML = '';
+    reviews.forEach(r => {
+      const div = document.createElement('div');
+      div.className = 'review';
+      div.innerHTML = `<strong>${r.name}:</strong> ${r.text}`;
+      reviewList.appendChild(div);
+    });
+  }
+
+  renderReviews();
+
+  document.getElementById('reviewForm').onsubmit = e => {
+    e.preventDefault();
+    reviews.push({
+      name: reviewName.value,
+      text: reviewText.value
+    });
+    localStorage.setItem(productId + '-reviews', JSON.stringify(reviews));
+    reviewName.value = '';
+    reviewText.value = '';
+    renderReviews();
+  };
+</script>
 
 </body>
 </html>
