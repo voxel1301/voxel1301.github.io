@@ -4,3 +4,143 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FHSSMP.ONLINE x JIM PAN PROD</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { font-family: 'Montserrat', sans-serif; background: #0f0d0b; color: #f2f2f2; line-height: 1.6; }
+
+    /* ===== HEADER ===== */
+    header {
+      background: linear-gradient(90deg, #E39E14, #FFB84D);
+      padding: 1.5em 2em;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      position: sticky;
+      top:0;
+      z-index:100;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8em;
+      color:#0f0d0b;
+      letter-spacing:2px;
+    }
+    .cart-icon {
+      position: relative;
+      font-weight: 800;
+      cursor: pointer;
+      color:#0f0d0b;
+      text-decoration:none;
+    }
+    .cart-count {
+      position:absolute;
+      top:-8px;
+      right:-12px;
+      background:#e74c3c;
+      color:white;
+      font-size:0.75em;
+      padding:2px 6px;
+      border-radius:999px;
+    }
+
+    /* ===== BANNER ===== */
+    .banner {
+      width: 100%;
+      height: 400px;
+      background: url('gavinpyramid.jpg') center/cover no-repeat;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      text-shadow: 0 0 15px rgba(0,0,0,0.7);
+      font-family:'Playfair Display', serif;
+      font-size: 2.5em;
+      letter-spacing:2px;
+      margin-bottom:2em;
+    }
+
+    /* ===== FEATURED ===== */
+    .featured {
+      text-align:center;
+      padding:2em 1em;
+    }
+    .featured h2 { color:#FFB84D; font-size:2.2em; margin-bottom:0.5em; }
+    .featured p { opacity:0.85; max-width:700px; margin:auto; }
+
+    /* ===== CATEGORIES / TAGS ===== */
+    .categories {
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:1em;
+      margin:2em 0;
+    }
+    .category {
+      padding:0.8em 1.5em;
+      border-radius:20px;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(6px);
+      cursor:pointer;
+      transition:0.3s;
+      border:1px solid rgba(255,255,255,0.2);
+    }
+    .category:hover { background:#FFB84D; color:#0f0d0b; }
+
+    /* ===== STORE GRID ===== */
+    .store-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2em;
+      padding: 3em 2em;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .product {
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.5);
+      text-decoration:none;
+      color:#f2f2f2;
+      position:relative;
+    }
+    .product:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 12px 25px rgba(0,0,0,0.7); }
+    .product img { width: 100%; display: block; border-bottom: 1px solid rgba(255,255,255,0.2); }
+    .product-name { font-weight: 600; font-size: 1.1em; margin: 1em 0 0.5em; color: #FFB84D; transition:0.3s; }
+    .product-name:hover { color:#fff; text-shadow: 0 0 10px #FFB84D, 0 0 20px #4dc0b5; }
+    .product-price { font-weight:bold; color:#4dc0b5; margin-bottom:1.2em; }
+    .quick-add {
+      position:absolute;
+      bottom:10px; left:50%; transform:translateX(-50%);
+      background: #FFB84D;
+      color:#0f0d0b;
+      border:none;
+      padding:0.6em 1.2em;
+      border-radius:12px;
+      font-weight:600;
+      cursor:pointer;
+      opacity:0.95;
+      transition:0.3s;
+    }
+    .quick-add:hover { background:#E39E14; transform:scale(1.05); }
+
+    footer {
+      text-align: center;
+      padding: 1.5em;
+      background-color: #E39E14;
+      color: #0f0d0b;
+      font-weight: 600;
+      margin-top: 3em;
+    }
+  </style>
+</head>
+
